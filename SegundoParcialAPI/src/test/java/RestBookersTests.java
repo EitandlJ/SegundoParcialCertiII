@@ -92,6 +92,20 @@ public class RestBookersTests {
 
     }
     @Test
+    public void getBookingByIdTest() {
+        RestAssured.baseURI = "https://restful-booker.herokuapp.com";
+
+        // Realizar un GET para obtener la reserva con ID 10
+        Response response = RestAssured
+                .given().get("/booking/10");
+
+        System.out.println("Response Body: " + response.getBody().asString());
+
+        // Verificar que la respuesta es 200
+        response.then().assertThat().statusCode(200);
+
+    }
+    @Test
     public void updateBookingTest() throws JsonProcessingException {
         RestAssured.baseURI = "https://restful-booker.herokuapp.com";
 
